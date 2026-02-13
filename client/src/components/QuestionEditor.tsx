@@ -58,6 +58,18 @@ export const QuestionEditor = memo(({
     [onUpdateOption]
   );
 
+  const getOptionError = useCallback((optIndex: number): string | undefined => {
+    const option = question.options[optIndex];
+    if (!option || !option.trim()) return undefined;
+    
+    const trimmedValue = option.trim();
+    const isDuplicate = question.options.some(
+      (opt, i) => i !== optIndex && opt.trim().toLowerCase() === trimmedValue.toLowerCase()
+    );
+    
+    return isDuplicate ? 'This option already exists' : undefined;
+  }, [question.options]);
+
   const handleRemoveOption = useCallback(
     (optIndex: number) => {
       onRemoveOption(optIndex);
@@ -107,28 +119,36 @@ export const QuestionEditor = memo(({
                 </Button>
               </div>
               <div className="space-y-2">
-                {question.options.map((option, optIndex) => (
-                  <div key={optIndex} className="flex items-center gap-2">
-                    <Input
-                      type="text"
-                      value={option}
-                      onChange={(e) => handleOptionChange(optIndex, e)}
-                      placeholder={`Option ${optIndex + 1}`}
-                      className="flex-1"
-                    />
-                    {question.options.length > 1 && (
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => handleRemoveOption(optIndex)}
-                        className="text-destructive hover:text-destructive"
-                      >
-                        <X className="h-4 w-4" />
-                      </Button>
-                    )}
-                  </div>
-                ))}
+                {question.options.map((option, optIndex) => {
+                  const optionError = getOptionError(optIndex);
+                  return (
+                    <div key={optIndex} className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <Input
+                          type="text"
+                          value={option}
+                          onChange={(e) => handleOptionChange(optIndex, e)}
+                          placeholder={`Option ${optIndex + 1}`}
+                          className={`flex-1 ${optionError ? 'border-destructive' : ''}`}
+                        />
+                        {question.options.length > 1 && (
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => handleRemoveOption(optIndex)}
+                            className="text-destructive hover:text-destructive"
+                          >
+                            <X className="h-4 w-4" />
+                          </Button>
+                        )}
+                      </div>
+                      {optionError && (
+                        <p className="text-sm text-destructive px-1">{optionError}</p>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

@@ -87,6 +87,22 @@ export const useFormBuilder = (): IUseFormBuilderReturn => {
         if (validOptions.length === 0) {
           throw new Error(MESSAGES.FORM.QUESTION_MUST_HAVE_OPTIONS(q.text));
         }
+        
+        const uniqueOptions = new Set<string>();
+        const duplicates: string[] = [];
+        validOptions.forEach((opt) => {
+          const lowerOpt = opt.trim().toLowerCase();
+          if (uniqueOptions.has(lowerOpt)) {
+            duplicates.push(opt.trim());
+          } else {
+            uniqueOptions.add(lowerOpt);
+          }
+        });
+        
+        if (duplicates.length > 0) {
+          throw new Error(`Question "${q.text}" has duplicate options: ${duplicates.join(', ')}`);
+        }
+        
         base.options = validOptions;
       }
 
