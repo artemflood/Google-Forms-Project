@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { QuestionType, IQuestionInput } from '../../types';
-import { useCreateFormMutation } from '../../store';
+import { QuestionType, IQuestionInput } from '@types';
+import { useCreateFormMutation } from '@store';
 import { IUseFormBuilderReturn, IQuestionBuilder } from './types';
-import { MESSAGES } from '../../constants/messages';
-import { getErrorMessage } from '../../utils/errorHandler';
+import { MESSAGES } from '@constants/messages';
+import { getErrorMessage } from '@utils';
 
 export const useFormBuilder = (): IUseFormBuilderReturn => {
   const navigate = useNavigate();

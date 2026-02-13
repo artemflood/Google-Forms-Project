@@ -1,13 +1,13 @@
 import { useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
-import { useGetFormsQuery, useDeleteFormMutation } from '../store';
-import { IForm } from '../types';
-import { Button } from '../components/ui/button';
-import { Card, CardContent } from '../components/ui/card';
-import { LoadingState, ErrorState, ConfirmationDialog, FormCard } from '../components';
-import { ROUTES } from '../constants/routes';
-import { MESSAGES } from '../constants/messages';
+import { useGetFormsQuery, useDeleteFormMutation } from '@store';
+import { IForm } from '@types';
+import { Button } from '@ui/button';
+import { Card, CardContent } from '@ui/card';
+import { LoadingState, ErrorState, ConfirmationDialog, FormCard } from '@components';
+import { ROUTES } from '@constants/routes';
+import { MESSAGES } from '@constants/messages';
 
 export const HomePage = () => {
   const { data, isLoading, error } = useGetFormsQuery(undefined);

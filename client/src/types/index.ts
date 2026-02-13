@@ -45,3 +45,6 @@ export interface IAnswerInput {
   value: string;
 }
 
+export type { ICreateFormResponse, IRTKQueryErrorData } from './api';
+export type { IGraphQLError, IGraphQLResponseError, IRTKQueryError } from './errors';
+

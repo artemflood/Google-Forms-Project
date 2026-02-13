@@ -1,12 +1,12 @@
 import { useMemo, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useGetFormQuery, useGetResponsesQuery } from '../store';
-import { IResponse } from '../types';
-import { Card, CardContent } from '../components/ui/card';
-import { LoadingState, ErrorState, ResponseCard } from '../components';
-import { MESSAGES } from '../constants/messages';
-import { ROUTES, ROUTE_PARAMS } from '../constants/routes';
-import { isValidFormId } from '../utils/validators';
+import { useGetFormQuery, useGetResponsesQuery } from '@store';
+import { IResponse } from '@types';
+import { Card, CardContent } from '@ui/card';
+import { LoadingState, ErrorState, ResponseCard } from '@components';
+import { MESSAGES } from '@constants/messages';
+import { ROUTES, ROUTE_PARAMS } from '@constants/routes';
+import { isValidFormId } from '@utils';
 
 export const FormResponsesPage = () => {
   const navigate = useNavigate();

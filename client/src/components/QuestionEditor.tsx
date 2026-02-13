@@ -1,11 +1,11 @@
-import { memo, useMemo, useCallback } from 'react';
-import { IQuestionBuilder } from '../hooks/useFormBuilder';
-import { QuestionType } from '../types';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Button } from './ui/button';
-import { Checkbox } from './ui/checkbox';
-import { Card, CardContent } from './ui/card';
+import { memo, useMemo, useCallback, ChangeEvent } from 'react';
+import { IQuestionBuilder } from '@hooks/useFormBuilder';
+import { QuestionType } from '@types';
+import { Input } from '@ui/input';
+import { Label } from '@ui/label';
+import { Button } from '@ui/button';
+import { Checkbox } from '@ui/checkbox';
+import { Card, CardContent } from '@ui/card';
 import { X } from 'lucide-react';
 
 interface IQuestionEditorProps {
@@ -38,7 +38,7 @@ export const QuestionEditor = memo(({
   );
 
   const handleTextChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       onUpdate({ text: e.target.value });
     },
     [onUpdate]
@@ -52,7 +52,7 @@ export const QuestionEditor = memo(({
   );
 
   const handleOptionChange = useCallback(
-    (optIndex: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    (optIndex: number, e: ChangeEvent<HTMLInputElement>) => {
       onUpdateOption(optIndex, e.target.value);
     },
     [onUpdateOption]

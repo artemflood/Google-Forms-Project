@@ -1,10 +1,10 @@
 import { useState, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IQuestion, QuestionType, IAnswerInput } from '../../types';
-import { useSubmitResponseMutation } from '../../store';
+import { IQuestion, QuestionType, IAnswerInput } from '@types';
+import { useSubmitResponseMutation } from '@store';
 import { IUseFormFillerReturn } from './types';
-import { MESSAGES } from '../../constants/messages';
-import { getErrorMessage } from '../../utils/errorHandler';
+import { MESSAGES } from '@constants/messages';
+import { getErrorMessage } from '@utils';
 
 export const useFormFiller = (formId: string, questions: IQuestion[]): IUseFormFillerReturn => {
   const navigate = useNavigate();
@@ -83,6 +83,25 @@ export const useFormFiller = (formId: string, questions: IQuestion[]): IUseFormF
 
   const hasErrors = useMemo(() => Object.keys(errors).length > 0, [errors]);
 
+  const areRequiredFieldsFilled = useMemo(() => {
+    return questions.every((question) => {
+      if (!question.required) return true;
+      
+      const answer = answers[question.id];
+      if (!answer) return false;
+      
+      if (Array.isArray(answer)) {
+        return answer.length > 0 && answer.some((val) => val.trim() !== '');
+      }
+      
+      return typeof answer === 'string' && answer.trim() !== '';
+    });
+  }, [answers, questions]);
+
+  const isSubmitDisabled = useMemo(() => {
+    return !areRequiredFieldsFilled || hasErrors || isLoading;
+  }, [areRequiredFieldsFilled, hasErrors, isLoading]);
+
   return {
     answers,
     updateAnswer,
@@ -90,6 +109,7 @@ export const useFormFiller = (formId: string, questions: IQuestion[]): IUseFormF
     errors,
     hasErrors,
     isLoading,
+    isSubmitDisabled,
   };
 };
 

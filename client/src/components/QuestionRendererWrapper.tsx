@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo } from 'react';
-import { IQuestion, QuestionType } from '../types';
+import { IQuestion, QuestionType } from '@types';
 import { QuestionRenderer } from './QuestionRenderer';
 
 interface IQuestionRendererWrapperProps {

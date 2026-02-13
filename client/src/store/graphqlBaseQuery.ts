@@ -1,6 +1,6 @@
 import { BaseQueryFn } from '@reduxjs/toolkit/query';
 import { GraphQLClient, RequestDocument, Variables } from 'graphql-request';
-import { IGraphQLResponseError, IRTKQueryError } from '../types/errors';
+import { IGraphQLResponseError, IRTKQueryError } from '@types';
 
 const client = new GraphQLClient('/graphql');
 

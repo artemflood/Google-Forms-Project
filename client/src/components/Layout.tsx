@@ -1,9 +1,9 @@
-import { memo, useMemo } from 'react';
+import { memo, ReactNode, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ROUTES } from '../constants/routes';
+import { ROUTES } from '@constants/routes';
 
 interface ILayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const Layout = memo(({ children }: ILayoutProps) => {

@@ -1,16 +1,16 @@
 import { useMemo, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { useGetFormQuery } from '../store';
-import { useFormFiller } from '../hooks/useFormFiller';
-import { QuestionRendererWrapper, LoadingState, ErrorState } from '../components';
-import { IQuestion } from '../types';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { MESSAGES } from '../constants/messages';
-import { ROUTES, ROUTE_PARAMS } from '../constants/routes';
-import { isValidFormId } from '../utils/validators';
-import { getErrorMessage } from '../utils/errorHandler';
+import { useGetFormQuery } from '@store';
+import { useFormFiller } from '@hooks/useFormFiller';
+import { QuestionRendererWrapper, LoadingState, ErrorState } from '@components';
+import { IQuestion } from '@types';
+import { Button } from '@ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ui/card';
+import { MESSAGES } from '@constants/messages';
+import { ROUTES, ROUTE_PARAMS } from '@constants/routes';
+import { isValidFormId } from '@utils';
+import { getErrorMessage } from '@utils';
 
 export const FormFillerPage = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const FormFillerPage = () => {
 
   const { data, isLoading, error } = useGetFormQuery(formId || '');
   const questions = useMemo(() => data?.form?.questions || [], [data?.form?.questions]);
-  const { answers, updateAnswer, submit, errors, hasErrors, isLoading: isSubmitting } = useFormFiller(
+  const { answers, updateAnswer, submit, errors, isLoading: isSubmitting, isSubmitDisabled } = useFormFiller(
     formId || '',
     questions
   );
@@ -79,7 +79,7 @@ export const FormFillerPage = () => {
       </Card>
 
       <div className="flex justify-end">
-        <Button onClick={handleSubmit} disabled={isSubmitting || hasErrors}>
+        <Button onClick={handleSubmit} disabled={isSubmitDisabled}>
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </Button>
       </div>

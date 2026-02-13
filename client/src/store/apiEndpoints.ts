@@ -6,9 +6,8 @@ import {
   CREATE_FORM,
   DELETE_FORM,
   SUBMIT_RESPONSE,
-} from '../graphql/queries';
-import { IQuestionInput } from '../types';
-import { ICreateFormResponse } from '../types/api';
+} from '@graphql/queries';
+import { IQuestionInput, ICreateFormResponse } from '@types';
 
 export const formsApi = api.injectEndpoints({
   endpoints: (builder) => ({

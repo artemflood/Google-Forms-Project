@@ -1,14 +1,14 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'sonner';
-import { Layout, LoadingState } from './components';
-import { ROUTES, ROUTE_PARAMS } from './constants/routes';
-import { MESSAGES } from './constants/messages';
+import { Layout, LoadingState } from '@components';
+import { ROUTES, ROUTE_PARAMS } from '@constants/routes';
+import { MESSAGES } from '@constants/messages';
 
-const HomePage = lazy(() => import('./pages').then((module) => ({ default: module.HomePage })));
-const FormBuilderPage = lazy(() => import('./pages').then((module) => ({ default: module.FormBuilderPage })));
-const FormFillerPage = lazy(() => import('./pages').then((module) => ({ default: module.FormFillerPage })));
-const FormResponsesPage = lazy(() => import('./pages').then((module) => ({ default: module.FormResponsesPage })));
+const HomePage = lazy(() => import('@pages').then((module) => ({ default: module.HomePage })));
+const FormBuilderPage = lazy(() => import('@pages').then((module) => ({ default: module.FormBuilderPage })));
+const FormFillerPage = lazy(() => import('@pages').then((module) => ({ default: module.FormFillerPage })));
+const FormResponsesPage = lazy(() => import('@pages').then((module) => ({ default: module.FormResponsesPage })));
 
 function App() {
   return (

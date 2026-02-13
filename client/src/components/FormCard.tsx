@@ -1,10 +1,10 @@
 import { memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { IForm } from '../types';
-import { Button } from './ui/button';
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
+import { IForm } from '@types';
+import { Button } from '@ui/button';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@ui/card';
 import { Trash2 } from 'lucide-react';
-import { ROUTES } from '../constants/routes';
+import { ROUTES } from '@constants/routes';
 
 interface IFormCardProps {
   form: IForm;

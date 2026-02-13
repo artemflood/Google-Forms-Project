@@ -1,15 +1,15 @@
 import { useCallback, useMemo } from 'react';
 import { toast } from 'sonner';
-import { useFormBuilder, IQuestionBuilder } from '../hooks/useFormBuilder';
-import { QuestionType } from '../types';
-import { QuestionEditor } from '../components';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import { Textarea } from '../components/ui/textarea';
-import { Button } from '../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { MESSAGES } from '../constants/messages';
-import { getErrorMessage } from '../utils/errorHandler';
+import { useFormBuilder, IQuestionBuilder } from '@hooks/useFormBuilder';
+import { QuestionType } from '@types';
+import { QuestionEditor } from '@components';
+import { Input } from '@ui/input';
+import { Label } from '@ui/label';
+import { Textarea } from '@ui/textarea';
+import { Button } from '@ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@ui/card';
+import { MESSAGES } from '@constants/messages';
+import { getErrorMessage } from '@utils';
 
 export const FormBuilderPage = () => {
   const {

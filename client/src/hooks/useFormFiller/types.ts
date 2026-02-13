@@ -5,5 +5,6 @@ export interface IUseFormFillerReturn {
   errors: Record<string, string>;
   hasErrors: boolean;
   isLoading: boolean;
+  isSubmitDisabled: boolean;
 }
 

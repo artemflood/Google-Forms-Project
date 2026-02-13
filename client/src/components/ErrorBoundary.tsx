@@ -1,6 +1,6 @@
 import { Component, type ReactNode } from 'react';
 import { ErrorState } from './LoadingState';
-import { MESSAGES } from '../constants/messages';
+import { MESSAGES } from '@constants/messages';
 
 interface IErrorBoundaryProps {
   children: ReactNode;

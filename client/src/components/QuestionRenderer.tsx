@@ -1,10 +1,10 @@
-import { memo, useMemo, useCallback } from 'react';
-import { IQuestion, QuestionType } from '../types';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Checkbox } from './ui/checkbox';
-import { cn } from '../lib/utils';
+import { memo, useMemo, useCallback, ChangeEvent } from 'react';
+import { IQuestion, QuestionType } from '@types';
+import { Input } from '@ui/input';
+import { Label } from '@ui/label';
+import { RadioGroup, RadioGroupItem } from '@ui/radio-group';
+import { Checkbox } from '@ui/checkbox';
+import { cn } from '@lib/utils';
 
 interface IQuestionRendererProps {
   question: IQuestion;
@@ -15,14 +15,14 @@ interface IQuestionRendererProps {
 
 export const QuestionRenderer = memo(({ question, value, onChange, error }: IQuestionRendererProps) => {
   const handleTextChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       onChange(e.target.value);
     },
     [onChange]
   );
 
   const handleDateChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: ChangeEvent<HTMLInputElement>) => {
       onChange(e.target.value);
     },
     [onChange]

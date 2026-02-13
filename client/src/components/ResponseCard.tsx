@@ -1,7 +1,7 @@
 import { memo, useMemo } from 'react';
-import { IResponse, IQuestion } from '../types';
-import { formatDate } from '../utils/formatters';
-import { Card, CardContent, CardDescription, CardHeader } from './ui/card';
+import { IResponse, IQuestion } from '@types';
+import { formatDate } from '@utils';
+import { Card, CardContent, CardDescription, CardHeader } from '@ui/card';
 
 interface IResponseCardProps {
   response: IResponse;
